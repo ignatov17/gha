@@ -43,11 +43,6 @@ jobs:
         # This allows the following upload-sarif action to still upload the results to your GitHub repo.
         continue-on-error: true
 
-      # This prepares directory where github/codeql-action/upload-sarif@v1 looks up report files by default.
-      - name: check dir
-        shell: bash
-        run: ls -la ../results
-
       - name: Upload SARIF report files to GitHub
         uses: github/codeql-action/upload-sarif@v3
         with:
