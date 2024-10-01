@@ -14,12 +14,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Clone ignatov17/target PUBLIC repository
-        uses: ignatov17/clone-github-repo-action@main
+        uses: actions/checkout@v3
         with:
-          depth: 1
-          branch: 'main'
-          owner: 'ignatov17'
-          repository: 'target'
+          repository: 'ignatov17/target'
+          #path: [my path]
+#          depth: 1
+#          branch: 'main'
+#          owner: 'ignatov17'
+#          repository: 'target'
 
       # This prepares directory where github/codeql-action/upload-sarif@v1 looks up report files by default.
       - name: Create ../results directory for SARIF report files
@@ -31,7 +33,7 @@ jobs:
         id: kube-linter-action-scan
         with:
           # Adjust this directory to the location where your kubernetes resources and helm charts are located.
-          directory: ./account-operator/chart/
+          directory: ./target/chart/
           # Adjust this to the location of kube-linter config you're using, or remove the setting if you'd like to use
           # the default config.
           # Example config file:	https://github.com/stackrox/kube-linter-action/blob/main/sample/.kube-linter-config.yml
