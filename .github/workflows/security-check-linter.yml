@@ -13,13 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Clone openmfp/account-operator PUBLIC repository
-        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
+      - name: Clone ignatov17/target PUBLIC repository
+        uses: ignatov17/clone-github-repo-action@main
         with:
           depth: 1
           branch: 'main'
-          owner: 'openmfp'
-          repository: 'account-operator'
+          owner: 'ignatov17'
+          repository: 'target'
 
       # This prepares directory where github/codeql-action/upload-sarif@v1 looks up report files by default.
       - name: Create ../results directory for SARIF report files
