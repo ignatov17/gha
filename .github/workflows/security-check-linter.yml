@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Clone the taret repo
       - name: Clone ignatov17/target PUBLIC repository
         uses: actions/checkout@v3
         with:
