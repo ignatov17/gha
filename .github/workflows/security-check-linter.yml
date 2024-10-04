@@ -13,12 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Clone the taret repo
-      - name: Clone ignatov17/target PUBLIC repository
-        uses: actions/checkout@v3
-        with:
-          repository: 'ignatov17/target'
-          path: target
+      #- name: Clone ignatov17/target PUBLIC repository
+      #  uses: actions/checkout@v3
+      #  with:
+      #    repository: 'ignatov17/target'
+      #    path: target
 
       # This prepares directory where github/codeql-action/upload-sarif@v1 looks up report files by default.
       - name: Create ../results directory for SARIF report files
@@ -30,7 +29,8 @@ jobs:
         id: kube-linter-action-scan
         with:
           # Adjust this directory to the location where your kubernetes resources and helm charts are located.
-          directory: ./target/chart/
+#          directory: ./target/chart/
+          directory: ./chart/
           # Adjust this to the location of kube-linter config you're using, or remove the setting if you'd like to use
           # the default config.
           # Example config file:	https://github.com/stackrox/kube-linter-action/blob/main/sample/.kube-linter-config.yml
@@ -48,7 +48,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: ../results/kube-linter.sarif        
+          sarif_file: ../results/kube-linter.sarif
 
       # Ensure the workflow eventually fails if files did not pass kube-linter checks.
       - name: Verify kube-linter-action succeeded
