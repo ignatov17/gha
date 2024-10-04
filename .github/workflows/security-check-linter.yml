@@ -1,6 +1,13 @@
 name: Check Kubernetes YAMLs with kube-linter
 
 on:
+  workflow_call:
+    inputs:
+      useTask:
+        required: false
+        type: boolean
+        default: false
+  
   # Note that both `push` and `pull_request` triggers should be present for GitHub to consistently present kube-linter
   # SARIF reports.
   push:
